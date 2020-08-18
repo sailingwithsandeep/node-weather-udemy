@@ -11,13 +11,14 @@ const { error } = require('console');
 const publicDirectoryPath = path.join(__dirname,'../assets')
 const viewsPath = path.join(__dirname,'../templates/views')
 const partialsPath = path.join(__dirname,'../templates/partials')
-
+const port = process.env.PORT || 3000
 //Handlebars and static
 app.set('view engine','hbs')
 app.set('views',viewsPath)
 hbs.registerPartials(partialsPath)
 //setup directory
 app.use(express.static(publicDirectoryPath))
+
 
 app.get('',(req,res)=>{
     res.render('index',{
@@ -91,6 +92,6 @@ app.get('*',(req,res)=>{
  
 
 
-app.listen(3000,()=>{
+app.listen(port ,()=>{
     console.log('Server is up!');
 })
